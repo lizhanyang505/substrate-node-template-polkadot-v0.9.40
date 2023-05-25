@@ -1,3 +1,4 @@
+### add task 
 # Substrate Node Template
 ## Add task 
 
@@ -156,6 +157,10 @@ Take special note of the following:
 
 ### Runtime
 
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/polkadot_js_web.jpg">
+</div>
+
 In Substrate, the terms "runtime" and "state transition function" are analogous.
 Both terms refer to the core logic of the blockchain that is responsible for validating blocks and executing the state changes they define.
 The Substrate project in this repository uses [FRAME](https://docs.substrate.io/fundamentals/runtime-development/#frame) to construct a blockchain runtime.
@@ -169,6 +174,10 @@ Review the [FRAME runtime implementation](./runtime/src/lib.rs) included in this
 - The pallets are composed into a single runtime by way of the [`construct_runtime!`](https://crates.parity.io/frame_support/macro.construct_runtime.html) macro, which is part of the core FRAME Support [system](https://docs.substrate.io/reference/frame-pallets/#system-pallets) library.
 
 ### Pallets
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/generate_block.jpg">
+</div>
+
 
 The runtime in this project is constructed using many FRAME pallets that ship with the [core Substrate repository](https://github.com/paritytech/substrate/tree/master/frame) and a template pallet that is [defined in the `pallets`](./pallets/template/src/lib.rs) directory.
 
