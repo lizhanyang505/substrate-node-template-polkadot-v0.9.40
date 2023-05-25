@@ -1,21 +1,35 @@
 # Substrate Node Template
-1、编写rust-toolchain.toml
-2、切换到nightly 版本
-rustup default nightly
+## Add task 
 
-3、编译按照如下脚步，但是需要提前安装 cargo install llvm@12
-CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
-
-
-版本配置：
+1、env
 substrate-node-template version: polkadot-0.9.30
 rustup install nightly-2023-01-01
 rustup target add wasm32-unknown-unknown --toolchain nightly-2023-01-01
 cargo +nightly-2023-01-01 build --release
 
-poe 模块
-#sp-std 设置 default-features = false
+2、add rust-toolchain.toml
+3、rustup dedault nightly
+
+4、install llvm -> cargo install llvm@12
+5、 compile
+CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
+6、poe module
+#sp-std set default-features = false
 #sp-std = { version = "5.0.0",default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.40" }
+
+7、cd node 
+CXX=/usr/local/opt/llvm@12/bin/clang cargo run -- --dev --tmp
+8、start
+./target/release/node-template --dev --tmp
+
+9、picatures
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/polkadot_js_web.jpg">
+</div>
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/generate_block.jpg">
+</div>
+
 
 
 A fresh [Substrate](https://substrate.io/) node, ready for hacking :rocket:
