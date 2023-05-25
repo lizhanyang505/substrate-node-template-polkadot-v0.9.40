@@ -1,3 +1,4 @@
+### add task 
 # Substrate Node Template
 1、编写rust-toolchain.toml
 2、切换到nightly 版本
@@ -141,6 +142,10 @@ Take special note of the following:
 
 
 ### Runtime
+
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/polkadot_js_web.jpg">
+</div>
 
 In Substrate, the terms "runtime" and "state transition function" are analogous.
 Both terms refer to the core logic of the blockchain that is responsible for validating blocks and executing the state changes they define.
