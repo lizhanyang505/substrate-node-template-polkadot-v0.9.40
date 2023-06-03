@@ -1,4 +1,3 @@
-### add task 
 # Substrate Node Template
 ## Add task 
 
@@ -30,6 +29,7 @@ CXX=/usr/local/opt/llvm@12/bin/clang cargo run -- --dev --tmp
 <div align="center">
   <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/generate_block.jpg">
 </div>
+
 
 
 
