@@ -2,10 +2,16 @@
 
 pub use pallet::*;
 
+#[cfg(test)]
+mod mock;
+
+#[cfg(test)]
+mod tests;
+
 #[frame_support::pallet]
 pub mod pallet {
 	use frame_support::pallet_prelude::*;
-	use frame_system::{pallet_prelude::*, Config};
+	use frame_system::{pallet_prelude::*};
 	use sp_std::prelude::*;
 
 	#[pallet::config]
@@ -22,6 +28,7 @@ pub mod pallet {
 
 	//存储项
 	#[pallet::storage]
+	#[pallet::getter(fn Proofs)]
 	pub type Proofs<T: Config> = StorageMap<
 	_,
 	Blake2_128Concat,
@@ -34,8 +41,10 @@ pub mod pallet {
 	#[pallet::event]
 	#[pallet::generate_deposit(pub(super) fn deposit_event)]
 	pub enum Event<T: Config> {
-		ClaimCreated(T::AccountId, Vec<u8>), 
-		ClaimRevoked(T::AccountId, Vec<u8>), 
+	//	ClaimCreated(T::AccountId, Vec<u8>), 
+	//	ClaimRevoked(T::AccountId, Vec<u8>), 
+	ClaimCreated(T::AccountId, BoundedVec<u8, T::MaxClaimLength>), 
+	ClaimRevoked(T::AccountId, BoundedVec<u8, T::MaxClaimLength>),
 	}
 
 	/// Error message.
@@ -71,7 +80,7 @@ pub mod pallet {
 				(sender.clone(), frame_system::Pallet::<T>::block_number()),
 			);
 
-			Self::deposit_event(Event::ClaimCreated(sender, claim));
+			Self::deposit_event(Event::ClaimCreated(sender, bounded_claim));
 
             Ok(().into())
 		}
@@ -79,7 +88,7 @@ pub mod pallet {
 		//claim revoke
 		#[pallet::weight(0)]
 		pub fn revoke_claim(origin: OriginFor<T>, claim: Vec<u8>) ->DispatchResultWithPostInfo {
-			let sender  = ensure_signed(origion)?;
+			let sender  = ensure_signed(origin)?;
 
 			let bounded_claim = 
 			BoundedVec::<u8, T::MaxClaimLength>::try_from(claim.clone()).map_err(|_| Error::<T>::ClaimTooLong)?;
@@ -87,7 +96,7 @@ pub mod pallet {
 
 			ensure!(owner == sender, Error::<T>::NotClaimOwner);
 			Proofs::<T>::remove(&bounded_claim);
-			Self::deposit_event(Event::ClaimRevoked(sender, claim));
+			Self::deposit_event(Event::ClaimRevoked(sender, bounded_claim));
 
 			Ok(().into())
 		}
