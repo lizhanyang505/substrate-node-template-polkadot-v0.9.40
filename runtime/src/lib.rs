@@ -14,6 +14,8 @@ use sp_core::{crypto::KeyTypeId, OpaqueMetadata};
 use pallet_insecure_randomness_collective_flip ;
 
 impl pallet_insecure_randomness_collective_flip::Config for Runtime {}
+
+use frame_support::PalletId;
 use sp_runtime::{
 	create_runtime_str, generic, impl_opaque_keys,
 	traits::{
@@ -107,7 +109,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	//   `spec_version`, and `authoring_version` are the same between Wasm and native.
 	// This value is set to 100 to notify Polkadot-JS App (https://polkadot.js.org/apps) to use
 	//   the compatible custom types.
-	spec_version: 100,
+	spec_version: 200, // 100 -> 200
 	impl_version: 1,
 	apis: RUNTIME_API_VERSIONS,
 	transaction_version: 1,
@@ -282,9 +284,17 @@ impl pallet_poe::Config for Runtime {
 }
 
 
+parameter_types! {
+	pub KittyPrice: Balance = EXISTENTIAL_DEPOSIT * 1000;
+	pub KittiesPalletId: PalletId = PalletId(*b"py/kitty");
+}
+
 impl pallet_kitties::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type Randomness = RandomnessModule;
+	type KittyPrice = KittyPrice;
+	type Currency = Balances;
+	type PalletId = KittiesPalletId;
    }
    
 

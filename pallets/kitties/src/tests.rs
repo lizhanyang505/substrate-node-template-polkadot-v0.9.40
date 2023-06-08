@@ -26,7 +26,7 @@ fn it_works_for_create() {
         let kitty = KittiesModule::kitties(kitty_id).expect("Kitty Created");
         
 
-        //test event
+        //判断上一个事件是否由create触发
         System::assert_last_event(Event::KittyCreated{who: account_id,kitty_id,kitty}.into());
     });
 
