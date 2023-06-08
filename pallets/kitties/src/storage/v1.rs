@@ -13,4 +13,6 @@ pub type KittyName = [u8; 4];
 pub struct Kitty {
 	pub name: KittyName,
 	pub dna: KittyDna,
+
+	
 }
