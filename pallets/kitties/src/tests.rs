@@ -10,6 +10,13 @@ fn it_works_for_create() {
         assert_eq!(KittiesModule::next_kitty_id(), kitty_id);
         assert_ok!(KittiesModule::create(RuntimeOrigin::signed(account_id)));
 
+        let res = Balances::set_balance(
+            RuntimeOrigin::root(),
+            account_id,
+            1_000_000_000,
+            0
+        );
+
         assert_eq!(KittiesModule::next_kitty_id(), kitty_id + 1);
         assert_eq!(KittiesModule::kitties(kitty_id).is_some(), true);
 

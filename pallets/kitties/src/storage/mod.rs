@@ -11,11 +11,21 @@ mod v1;
 
 pub(crate) fn upgrade_storage<T: Config>() -> Weight {
 	let on_chain_ver: StorageVersion = Pallet::<T>::on_chain_storage_version();
-	if on_chain_ver == v1::STORAGE_VERSION {
+//	if on_chain_ver == v1::STORAGE_VERSION {
+//		from_v1::<T>();
+//		current_version::STORAGE_VERSION.put::<Pallet::<T>>();
+//	} else if on_chain_ver == v0::STORAGE_VERSION {
+//		from_v0::<T>();
+//		current_version::STORAGE_VERSION.put::<Pallet::<T>>();
+//	}
+
+	if on_chain_ver == v0::STORAGE_VERSION {
+		// 这里采取从v0 升级到v1 ,后续再从v1 升级到v2, 
+		// 当然也可以采取上面注释的从v0或者v1 分别升级到v2
+		v0_to_v1::<T>();
+		v1::STORAGE_VERSION.put::<Pallet::<T>>();
+	} else if on_chain_ver == v1::STORAGE_VERSION {
 		from_v1::<T>();
-		current_version::STORAGE_VERSION.put::<Pallet::<T>>();
-	} else if on_chain_ver == v0::STORAGE_VERSION {
-		from_v0::<T>();
 		current_version::STORAGE_VERSION.put::<Pallet::<T>>();
 	}
 
@@ -32,7 +42,7 @@ fn from_v1<T: Config>() {
 	for (kitty_id, kitty_old) in
 		storage_key_iter::<v1::KittyId, v1::Kitty, Blake2_128Concat>(module, item).drain()
 	{
-		let kitty = current_version::Kitty { name: from_name_v1(&kitty_old.name, b"5678"), dna: kitty_old.dna };
+		let kitty = current_version::Kitty { name: from_name_v1(&kitty_old.name, b"o_v2"), dna: kitty_old.dna };
 		Kitties::<T>::insert(kitty_id, &kitty);
 	}
 }
@@ -43,7 +53,19 @@ fn from_name_v1(name_v1: &v1::KittyName, append: &[u8; 4]) -> current_version::K
 	result[4..].copy_from_slice(append);
 	result
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+ // v0 ->v1
+fn v0_to_v1<T: Config>() {
+	let module = Kitties::<T>::module_prefix();
+	let item = Kitties::<T>::storage_prefix();
 
+	for (kitty_id, kitty_old) in
+		storage_key_iter::<v0::KittyId, v0::Kitty, Blake2_128Concat>(module, item).drain()
+	{
+		let kitty = current_version::Kitty { name: *b"v0_to_v1", dna: kitty_old.0 };
+		Kitties::<T>::insert(kitty_id, &kitty);
+	}
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /// v0 -> current
 
