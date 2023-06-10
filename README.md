@@ -9,14 +9,18 @@ CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
 ```sh
 ./target/release/node-template --dev --base-path /tmp/kitties
 ```
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/block_running.jpg">
+</div>
+
 - 在web 端创建kitties
 <div align="center">
-  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/polkadot_js_web.jpg">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/create_kitties.jpg">
 </div>
 
 - kitties 结果如下
 <div align="center">
-  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/generate_block.jpg">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/kitties_v0.jpg">
 </div>
 
 ### 2、v0 -> v1 升级
@@ -26,13 +30,13 @@ CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
 ```
 - 上传编译好的wasm
 <div align="center">
-  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/polkadot_js_web.jpg">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/v0-%3Ev1.jpg">
 </div>
 
 - 查看链状态
 
 <div align="center">
-  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/polkadot_js_web.jpg">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/v0_v1_result.jpg">
 </div>
 
 ### 2、v1 -> v2 升级
@@ -42,13 +46,13 @@ CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
 ```
 - 上传编译好的wasm
 <div align="center">
-  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/polkadot_js_web.jpg">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/v1_t0_v2.jpg">
 </div>
 
 - 查看链状态
 
 <div align="center">
-  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/polkadot_js_web.jpg">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/v1_v2_result.jpg">
 </div>
 
 
