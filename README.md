@@ -24,7 +24,7 @@ CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
 </div>
 
 ### 2、v0 -> v1 升级
-- 编译好的wasm 进行启动，和上面base-path 保留一致，run time 模块中的：spec_version: 101
+- 编译好的wasm 进行启动，和上面base-path 保留一致，只需要修改run time 模块中的：spec_version: 101
 ```sh
 ./target/release/node-template --dev --base-path /tmp/kitties
 ```
@@ -40,7 +40,7 @@ CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
 </div>
 
 ### 2、v1 -> v2 升级
-- 编译好的wasm 进行启动，和上面base-path 保留一致，run time 模块中的：spec_version: 102
+- 编译好的wasm 进行启动，和上面base-path 保留一致，只需要run time 模块中的：spec_version: 102
 ```sh
 ./target/release/node-template --dev --base-path /tmp/kitties
 ```
@@ -54,12 +54,6 @@ CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
 <div align="center">
   <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/v1_v2_result.jpg">
 </div>
-
-
-
-
-
-
 
 
 
