@@ -1,34 +1,62 @@
 # Substrate Node Template
-## Add task 
-
-1、env
-substrate-node-template version: polkadot-0.9.30
-rustup install nightly-2023-01-01
-rustup target add wasm32-unknown-unknown --toolchain nightly-2023-01-01
-cargo +nightly-2023-01-01 build --release
-
-2、add rust-toolchain.toml
-3、rustup dedault nightly
-
-4、install llvm -> cargo install llvm@12
-5、 compile
+## 第三课
+### 1、kitties 初始化
+- 基于main 分支执行如下命令wasm编译
+```sh
 CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
-6、poe module
-#sp-std set default-features = false
-#sp-std = { version = "5.0.0",default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.40" }
-
-7、cd node 
-CXX=/usr/local/opt/llvm@12/bin/clang cargo run -- --dev --tmp
-8、start
-./target/release/node-template --dev --tmp
-
-9、picatures
+```
+- 启动编译好的wasm 
+```sh
+./target/release/node-template --dev --base-path /tmp/kitties
+```
 <div align="center">
-  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/polkadot_js_web.jpg">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/block_running.jpg">
 </div>
+
+- 在web 端创建kitties
 <div align="center">
-  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/main/generate_block.jpg">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/create_kitties.jpg">
 </div>
+
+- kitties 结果如下
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/kitties_v0.jpg">
+</div>
+
+### 2、v0 -> v1 升级
+- 编译好的wasm 进行启动，和上面base-path 保留一致，只需要修改run time 模块中的：spec_version: 101
+```sh
+./target/release/node-template --dev --base-path /tmp/kitties
+```
+- 上传编译好的wasm
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/v0-%3Ev1.jpg">
+</div>
+
+- 查看链状态
+
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/v0_v1_result.jpg">
+</div>
+
+### 2、v1 -> v2 升级
+- 编译好的wasm 进行启动，和上面base-path 保留一致，只需要run time 模块中的：spec_version: 102
+```sh
+./target/release/node-template --dev --base-path /tmp/kitties
+```
+- 上传编译好的wasm
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/v1_t0_v2.jpg">
+</div>
+
+- 查看链状态
+
+<div align="center">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/three_works/kitties_picture/v1_v2_result.jpg">
+</div>
+
+
+
 
 
 
