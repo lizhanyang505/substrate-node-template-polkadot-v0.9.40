@@ -1,11 +1,15 @@
 # Substrate Node Template
 ## 第四课
-### 1、按照kuaidi100 模块进行off chain 编写并进行编译
+### 1、链上随机数和链下随机数的区别
+#### 链上随机数和链下随机数是两种不同的生成随机数的方法，具有如下区别：
+- 链上随机数：指通过链上智能合约（runtime module）内置的随机数生成器函数来获得的随机数。由于这些随机数是通过区块链共识算法生成的，因此可以被认为是完全确定和公正的。所有节点都可以验证这些随机数的产生过程，确保其安全性和可靠性。
+- 链下随机数：指通过外部数据源或硬件设备生成的随机数。这些随机数不能被区块链网络直接验证，需要依赖第三方信任机构或其他可信机制来确保其安全性和可靠性。例如，我们可以通过与链下 oracle 交互来获取链下随机数。
+总之，链上随机数是基于区块链共识算法的可验证随机数生成方式，而链下随机数则需要依赖外部机制来保证其安全性和可靠性。在实践中，根据具体的需求和应用场景，我们可以选择使用不同的随机数生成方式。
+### 2、按照kuaidi100 模块进行off chain 编写并进行编译
 - 基于 four_works 分支执行如下命令wasm编译
 ```sh
 CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
 ```
-
 - 启动编译好的wasm
 ```sh
 ./target/release/node-template --dev --tmp --enable-offchain-indexing true
@@ -25,9 +29,6 @@ CXX=/usr/local/opt/llvm@12/bin/clang cargo build --release
 <div align="center">
   <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/four_works/off_chain_works/off_chain_3.jpg">
 </div>
-
-
-
 
 
 
