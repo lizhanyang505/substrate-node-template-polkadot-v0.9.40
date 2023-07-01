@@ -14,7 +14,7 @@ benchmarks! {
 		let d in 0 .. T::MaxClaimLength::get();
 		let claim = BoundedVec::try_from(vec![0; d as usize]).unwrap();
 		let caller: T::AccountId = whitelisted_caller();
-	///	assert!(Pallet::<T>::create_claim(RawOrigin::Signed(caller.clone()).into(), claim.clone()).is_ok());
+		assert!(Pallet::<T>::create_claim(RawOrigin::Signed(caller.clone()).into(), claim.clone()).is_ok());
 	}: _(RawOrigin::Signed(caller.clone()), claim.clone())
 
 
@@ -23,12 +23,11 @@ benchmarks! {
 		let claim = BoundedVec::try_from(vec![0; d as usize]).unwrap();
 		let caller: T::AccountId = whitelisted_caller();
 		let recipient: T::AccountId = account("recipient", 0, 0);
-	///	assert!(Pallet::<T>::create_claim(RawOrigin::Signed(caller.clone()).into(), claim.clone()).is_ok());
+		assert!(Pallet::<T>::create_claim(RawOrigin::Signed(caller.clone()).into(), claim.clone()).is_ok());
 	}: _(RawOrigin::Signed(caller), recipient, claim)
 
     impl_benchmark_test_suite!(PoeModule, crate::mock::new_test_ext(), crate::mock::Test);
 
 }
-
 
 
