@@ -39,6 +39,5 @@ CXX=/usr/local/opt/llvm@12/bin/clang cargo build --features runtime-benchmarks -
 ./target/release/node-template build-spec --chain=spec-dev.json --raw > spec-dev-raw.json
 ```
 <div align="center">
-  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/six_works/img/benchmarking3.jpg">
+  <img src="https://github.com/lizhanyang505/substrate-node-template-polkadot-v0.9.40/blob/six_works/img/chain_spec.jpg">
 </div>
-
