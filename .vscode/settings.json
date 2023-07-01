@@ -1,0 +1,8 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./pallets/poe/Cargo.toml",
+        "./pallets/poe/Cargo.toml",
+        "./pallets/poe/Cargo.toml",
+        "./pallets/poe/Cargo.toml"
+    ]
+}
